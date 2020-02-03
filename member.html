@@ -19,7 +19,7 @@ tags:
 				<p class="post-tags">
 					{% for tag in item.tags %}
 					{% assign tag_url = '/tags/' | append: tag %}
-						{% for tm in site.data.opensource.tagmap %}
+						{% for tm in site.data.member.tagmap %}
 							{% if tag == tm.tag %}
 								{% assign tag_url = tm.url %}
 							{% endif %}
