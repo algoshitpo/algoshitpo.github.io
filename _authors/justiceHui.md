@@ -1,6 +1,5 @@
 ---
 name: justiceHui
 title: Jeounghui Nah
-image: /files/authors/justiceHui.jpg
+image: /files/authors/justiceHui.png
 ---
-
