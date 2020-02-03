@@ -56,12 +56,24 @@
 <link href="{{ site.asset_url }}/apple-touch-icon.png" rel="apple-touch-icon" type="image/png"/>
 <link href="{{ site.asset_url }}/apple-touch-icon.png" rel="apple-touch-icon-precomposed" type="image/png"/>
 <link href="{{ site.asset_url }}/lib/normalize.css" rel="stylesheet" type="text/css"/>
-<link href="{{ site.asset_url }}/css/monokai.css" rel="stylesheet" type="text/css"/> 
+<link href="{{ site.asset_url }}/css/monokai.css" rel="stylesheet" type="text/css"/>
 <link href="{{ site.asset_url }}/lib/magnific-popup.min.css" rel="stylesheet" type="text/css"/>
-<link href="{{ site.asset_url }}/fonts/Kakao.css" rel="stylesheet" type="text/css"/> 
+<link href="{{ site.asset_url }}/fonts/Kakao.css" rel="stylesheet" type="text/css"/>
 <link href="{{ site.asset_url }}/css/screen.css" rel="stylesheet" type="text/css"/>
 <script>
     if (window.location.host.indexOf('tech.kakao.com') > -1 && window.location.protocol == "https:"){
         window.location = window.location.toString().replace(/^https:/, "http:");
     }
 </script>
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+<!-- mathjax -->
