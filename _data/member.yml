@@ -1,0 +1,33 @@
+defaults:
+  - name: ahgus89
+    github: https://github.com/ahgus89
+    title:
+    blog_url: http://ahgus89.github.io
+    content: 잡다한 지식방
+    tags:
+
+  - name: justiceHui
+    github: https://github.com/justiceHui
+    title:
+    blog_url: http://justiceHui.github.io
+    content: justiceHui가 PS하는 블로그
+    tags:
+
+  - name:  ryute
+    github: https://github.com/kimjg1119
+    title:
+    blog_url: https://ryute.tistory.com/
+    content: 알고리즘 PS하는 블로그
+    tags:
+
+  - name:  urd05
+    github: https://github.com/urd05
+    title:
+    blog_url:
+    content: 빨리 블로그를 만드세요 -_-;;
+    tags:
+
+
+tagmap:
+  - tag: ㅁㄴㅇㄹ
+    url: ㅁㄴㅇㄹ
