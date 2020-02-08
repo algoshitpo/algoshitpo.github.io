@@ -3,7 +3,7 @@ layout: post
 title: '해싱으로 문자열 문제 날로 먹기'
 author: ryute
 date: 2020-02-09 2:00
-tags: [blog]
+tags: [String, Hash]
 ---
 
 ## Intro
