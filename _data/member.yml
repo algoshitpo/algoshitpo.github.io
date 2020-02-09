@@ -20,8 +20,15 @@ defaults:
     content: 알고리즘 PS하는 블로그
     tags:
 
-  - name:  urd05
+  - name:  pplat
     github: https://github.com/urd05
+    title:
+    blog_url:
+    content: 빨리 블로그를 만드세요 -_-;;
+    tags:
+    
+  - name:  karuna
+    github: https://github.com/jhwest1
     title:
     blog_url:
     content: 빨리 블로그를 만드세요 -_-;;
