@@ -1,5 +1,5 @@
 ---
 name: Karuna
-title: <title>
+title: Hyunseo Jeong
 image: /files/authors/Karuna.jpg
 ---
