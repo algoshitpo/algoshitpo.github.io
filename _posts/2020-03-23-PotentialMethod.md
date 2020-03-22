@@ -35,7 +35,7 @@ Potential Method가 뭘까요? Potential Method는 우리가 흔히 사용하는
 
 함수 $ \Phi $ 를 자료구조의 상태, 즉 포텐셜을 나타내기 위한 함수로 정의할 수 있습니다. 이 함수는 자료구조의 상태를 음이 아닌 정수로 변환해줍니다. $D$가 자료구조의 상태라고 하면, $ \Phi (D) $는 이 자료구조의 현재 Potential Energy를 나타냅니다. 다른 말로는, 자료구조가 얼마나 '이상적인 상태'에서 먼지를 나타내기도 합니다. $\Phi$는 자유롭게 잡을 수 있지만, $\Phi(D_0) = 0$이여야 하며 $\Phi (\di) \ge 0$ 이어야 합니다. 이 조건을 만족하는 선에서 후술할 amortized time이 최대한 균일하게 유지될 수 있도록 함수를 적당히 설정해 주면 됩니다.
 
-$o$를 자료구조에서 수행하는 연산 중 하나라고 합시다. $_{before}$을 연산 $o$를 수행하기 전 자료구조의 상태, $_{after}$을 연산 $o$를 수행한 이후의 자료구조의 상태라고 할 때, $ \Phi $에 대해 연산 $o$의 amortized time은 다음과 같습니다.
+$o$를 자료구조에서 수행하는 연산 중 하나라고 합시다. $\space _{before}$을 연산 $o$를 수행하기 전 자료구조의 상태, $\space  _{after}$을 연산 $o$를 수행한 이후의 자료구조의 상태라고 할 때, $ \Phi $에 대해 연산 $o$의 amortized time은 다음과 같습니다.
 $$
 T_{amortized}(o) = T_{actual}(o)+C \cdot (\Phi(D_{after})-\Phi(D_{before}))
 $$
@@ -90,20 +90,12 @@ $$
 
 이 경우 $\capa (D_i) = 2 \cdot \capa (D_{i-1})$ 입니다. 현재 배열에 있는 원소들을 조금 더 넓은 여유 공간이 있는 곳으로 옮겨줘야 하고 새로운 원소 하나를 추가해야 하므로, 연산을 수행하는 데 요구하는 실제 비용인 $T_{actual} (o_i) = 1 + \capa(D_i)$ 입니다. 하지만 이렇게 한 연산의 비용이 늘어나는 만큼 요구되는 Potential의 양은 줄어듭니다. 보다 구체적으로,
 $$
-\begin{eqnarray*}
-\PhiInsert (D_i) - \PhiInsert(D_i-1) &=& (2 \cdot \size (D_i) - \capa (D_{i})) - (2 \cdot \size(\dim) - \capa (\dim)) \\
-&=& 2-\capa (D_i) + \capa (D_{i-1}) \\
-&=& 2-\capa (D_{i-1})
-
-\end{eqnarray*}
+\begin{eqnarray*} \PhiInsert (D_i) - \PhiInsert(D_i-1) &=& (2 \cdot \size (D_i) - \capa (D_{i})) - (2 \cdot \size(\dim) - \capa (\dim)) \\ &=& 2-\capa (D_i) + \capa (D_{i-1}) \\
+&=& 2-\capa (D_{i-1}) \end{eqnarray*}
 $$
 가 됩니다. 이 경우에도 amortized time은 위 둘의 합으로
 $$
-\begin{eqnarray*}
-T_{actual}(o_i) + (\PhiInsert(D_i) - \PhiInsert(D_{i-1})) &=& 1 + \capa(D_{i-1}) + (2-\capa(D_{i-1})) \\
-&=& 3
-
-\end{eqnarray*}
+\begin{eqnarray*} T_{actual}(o_i) + (\PhiInsert(D_i) - \PhiInsert(D_{i-1})) &=& 1 + \capa(D_{i-1}) + (2-\capa(D_{i-1})) \\ &=& 3 \end{eqnarray*}
 $$
 이 됩니다.
 
@@ -132,20 +124,12 @@ $$
 
 먼저 원소를 삽입할 때는 위에 서술한 증명과 같이 potential time이 $3$이라는 것을 알 수 있습니다. 그렇다면 원소를 삭제할 때는 어떨까요? 이 경우 배열의 크기가 절반으로 줄어들게 되므로 $ \displaystyle \capa(\di) = \frac{1}{2} \capa(\dim)$입니다. 연산을 수행하는 데 필요한 비용은 배열 전체를 옮겨야 하므로 $\displaystyle T_{actual}(o) = \size (\di) = \frac{1}{4} \capa(\di)$입니다. 역시 이 때도 퍼텐셜이 달라집니다. 보다 구체적으로,
 $$
-\begin{eqnarray*}
-\Phi (D_i) - \Phi(D_i-1) &=& (\capa(\di)/2 - \size (\di)) - (\capa(\dim)/2 - \size (\dim)) \\
-&=& 1 + \capa(\di)/2 -\capa(\dim)/2 \\
-&=& 1-\capa (D_{i}) / 4
-
-\end{eqnarray*}
+\begin{eqnarray*} \Phi (D_i) - \Phi(D_i-1) &=& (\capa(\di)/2 - \size (\di)) - (\capa(\dim)/2 - \size (\dim)) \\ &=& 1 + \capa(\di)/2 -\capa(\dim)/2 \\ &=& 1-\capa (D_{i}) / 4 \end{eqnarray*}
 $$
 와 같습니다. 이 경우에 potential time을 분석해 보면 
 $$
 \begin{eqnarray*}
-T_{actual}(o_i) + (\Phi(D_i) - \Phi(D_{i-1})) &=& \capa(D_{i}) / 4 + (1-\capa(D_{i})/4) \\
-&=& 1
-
-\end{eqnarray*}
+T_{actual}(o_i) + (\Phi(D_i) - \Phi(D_{i-1})) &=& \capa(D_{i}) / 4 + (1-\capa(D_{i})/4) \\ &=& 1 \end{eqnarray*}
 $$
 입니다.  결과적으로 삽입과 삭제에서 모두 amortized time이 $O(1)$이므로, Dynamic Array에서의 삽입과 삭제는 실제로도 amortized $O(1)$에 수행된다는 결론을 낼 수 있습니다.
 
@@ -284,7 +268,7 @@ $$
 $$
 \displaystyle
 \begin{eqnarray*}
-AC(\mbox{Splay}(x)) &=& \sum_{i=1}^{n-1} ( AC(\zzig) \or AC(\zzag)) +AC(\zig)\\
+AC(\mbox{Splay}(x)) &=& \sum_{i=1}^{n-1} ( AC(\zzig) ∨ AC(\zzag)) +AC(\zig)\\
 &=& 3(r_1 -r_0) + 3(r_2 -r_1) +\cdots + 3(r_n -r_{n-1}) + 1 \\
 &=& 3(r_n - r_0) +1 \\
 &=& 3(r(root)-r(x))+1
