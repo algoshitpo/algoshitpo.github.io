@@ -1,0 +1,36 @@
+<ul id='problem-list'></ul>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+  const problem_list = '{{ include.problem_list }}'.split(',');
+
+  function showProblem(id){
+    $.ajax({
+      type: 'GET',
+      url: 'https://solved.ac/api/v3/problem/show?problemId=' + id,
+      dataType: 'json',
+      timeout: 10000,
+      cache: false,
+      success: function(json) {
+        const title = json['titleKo'];
+        const tier = json['level'];
+        const img_tag = document.getElementById(`tier-${id}`);
+        const a_tag = document.getElementById(`title-${id}`);
+        img_tag.src = `https://static.solved.ac/tier_small/${tier}.svg`;
+        a_tag.href = `http://icpc.me/${id}`;
+        a_tag.innerText = `BOJ${id} ${title}`;
+      }
+    });
+  }
+  function showProblems(){
+    let inner = '';
+    for(const i of problem_list){
+      inner += `<li><img id='tier-${i}' width='15px' src='#'> <a id='title-${i}' target='_blank' href='#'></a></li>\n`;
+    }
+    document.getElementById('problem-list').innerHTML = inner;
+    for(const i of problem_list){
+      showProblem(i);
+    }
+  }
+  showProblems();
+</script>
